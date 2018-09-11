@@ -13,6 +13,7 @@
 		856D9CEE2148489200647661 /* Nice_Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CEC2148489200647661 /* Nice_Notes.xcdatamodeld */; };
 		856D9CF02148489300647661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CEF2148489300647661 /* Assets.xcassets */; };
 		856D9CF32148489300647661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CF12148489300647661 /* LaunchScreen.storyboard */; };
+		856D9CFB214848EC00647661 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CFA214848EC00647661 /* NoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		856D9CEF2148489300647661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		856D9CF22148489300647661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856D9CF42148489300647661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		856D9CFA214848EC00647661 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				856D9CF12148489300647661 /* LaunchScreen.storyboard */,
 				856D9CF42148489300647661 /* Info.plist */,
 				856D9CEC2148489200647661 /* Nice_Notes.xcdatamodeld */,
+				856D9CFA214848EC00647661 /* NoteViewController.swift */,
 			);
 			path = "Nice Notes";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				856D9CFB214848EC00647661 /* NoteViewController.swift in Sources */,
 				856D9CE82148489200647661 /* ViewController.swift in Sources */,
 				856D9CE62148489200647661 /* AppDelegate.swift in Sources */,
 				856D9CEE2148489200647661 /* Nice_Notes.xcdatamodeld in Sources */,
