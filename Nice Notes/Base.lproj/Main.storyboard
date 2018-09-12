@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G8P-9a-dpl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,26 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iW4-d8-jyD" userLabel="Tool Stack View">
-                                <rect key="frame" x="0.0" y="35" width="375" height="44"/>
-                                <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYR-Cb-bxo">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <items>
-                                            <barButtonItem systemItem="add" id="O0Q-6f-dqk">
-                                                <connections>
-                                                    <action selector="addNote:" destination="BYZ-38-t0r" id="C3n-k3-79w"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H4b-oK-l31" userLabel="Table Stack View">
-                                <rect key="frame" x="15" y="94" width="345" height="558"/>
+                                <rect key="frame" x="15" y="79" width="345" height="573"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KwJ-Ho-AyO">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="558"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="573"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" textLabel="ByP-U9-m6k" imageView="Mvq-7d-8P7" style="IBUITableViewCellStyleDefault" id="3rx-Ki-aWT">
@@ -71,27 +56,34 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="H4b-oK-l31" firstAttribute="top" secondItem="iW4-d8-jyD" secondAttribute="bottom" constant="15" id="1DZ-s9-btV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H4b-oK-l31" secondAttribute="trailing" constant="15" id="1ng-8r-1iJ"/>
-                            <constraint firstItem="iW4-d8-jyD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="79m-Qz-gIt"/>
-                            <constraint firstItem="iW4-d8-jyD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="JhN-5c-D3R"/>
-                            <constraint firstItem="iW4-d8-jyD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LTx-aa-gbQ"/>
+                            <constraint firstItem="H4b-oK-l31" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="54Z-ht-rm2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H4b-oK-l31" secondAttribute="bottom" constant="15" id="A41-Uf-i39"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H4b-oK-l31" secondAttribute="trailing" constant="15" id="IQC-CZ-Fxd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H4b-oK-l31" secondAttribute="bottom" constant="15" id="Luh-e9-GB4"/>
+                            <constraint firstItem="H4b-oK-l31" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="fPv-4H-r0k"/>
                             <constraint firstItem="H4b-oK-l31" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="rW2-Y4-dZz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xPS-xD-H8F">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="O0Q-6f-dqk">
+                            <connections>
+                                <action selector="addNote:" destination="BYZ-38-t0r" id="C3n-k3-79w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addNoteButton" destination="O0Q-6f-dqk" id="b2I-z9-ozS"/>
                         <outlet property="notesTableView" destination="KwJ-Ho-AyO" id="yCD-A7-Vx5"/>
-                        <segue destination="WE6-dT-3qU" kind="presentation" identifier="showNote" id="Brl-yK-ryx"/>
+                        <segue destination="WE6-dT-3qU" kind="show" identifier="showNote" id="cZh-VL-eLc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="29"/>
+            <point key="canvasLocation" x="1316" y="28.335832083958024"/>
         </scene>
-        <!--Note View Controller-->
+        <!--Name of Note-->
         <scene sceneID="wR3-8h-qUR">
             <objects>
                 <viewController id="WE6-dT-3qU" customClass="NoteViewController" customModule="Nice_Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,42 +91,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ymj-jV-x6b">
-                                <rect key="frame" x="1" y="35" width="374" height="44"/>
-                                <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw1-Mw-SM3">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                        <items>
-                                            <barButtonItem systemItem="organize" id="jY9-jd-whP" userLabel="Notebook Button">
-                                                <connections>
-                                                    <action selector="backToNotebook:" destination="WE6-dT-3qU" id="NuW-Tl-XIQ"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="Item" style="plain" id="c8a-gS-fYZ">
-                                                <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="KFF-6y-F46" userLabel="Note Name Text Field">
-                                                    <rect key="frame" x="42" y="7" width="265" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="name"/>
-                                                </textField>
-                                            </barButtonItem>
-                                            <barButtonItem systemItem="save" id="46i-I3-HOH">
-                                                <connections>
-                                                    <action selector="saveNote:" destination="WE6-dT-3qU" id="qqH-lG-utN"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2TP-0U-nau">
-                                <rect key="frame" x="15" y="94" width="345" height="558"/>
+                                <rect key="frame" x="15" y="79" width="345" height="573"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GDW-A9-eCt">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="558"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="573"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -144,25 +106,41 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iWI-yE-csk" firstAttribute="bottom" secondItem="2TP-0U-nau" secondAttribute="bottom" constant="15" id="6wM-Uy-lec"/>
-                            <constraint firstItem="2TP-0U-nau" firstAttribute="top" secondItem="ymj-jV-x6b" secondAttribute="bottom" constant="15" id="PYh-4h-LlI"/>
+                            <constraint firstItem="2TP-0U-nau" firstAttribute="top" secondItem="iWI-yE-csk" secondAttribute="top" constant="15" id="D4N-gn-Afh"/>
                             <constraint firstItem="iWI-yE-csk" firstAttribute="trailing" secondItem="2TP-0U-nau" secondAttribute="trailing" constant="15" id="XYg-CF-Gls"/>
-                            <constraint firstItem="ymj-jV-x6b" firstAttribute="trailing" secondItem="iWI-yE-csk" secondAttribute="trailing" id="YUs-hO-AX2"/>
-                            <constraint firstItem="ymj-jV-x6b" firstAttribute="top" secondItem="iWI-yE-csk" secondAttribute="top" constant="15" id="fMu-rG-4jV"/>
-                            <constraint firstItem="ymj-jV-x6b" firstAttribute="leading" secondItem="iWI-yE-csk" secondAttribute="leading" constant="1" id="fr0-NF-PPO"/>
+                            <constraint firstItem="iWI-yE-csk" firstAttribute="bottom" secondItem="2TP-0U-nau" secondAttribute="bottom" constant="15" id="a68-Nq-YnG"/>
+                            <constraint firstItem="iWI-yE-csk" firstAttribute="trailing" secondItem="2TP-0U-nau" secondAttribute="trailing" constant="15" id="eR2-YF-3lD"/>
                             <constraint firstItem="2TP-0U-nau" firstAttribute="leading" secondItem="iWI-yE-csk" secondAttribute="leading" constant="15" id="gx1-M7-Q7N"/>
+                            <constraint firstItem="2TP-0U-nau" firstAttribute="leading" secondItem="iWI-yE-csk" secondAttribute="leading" constant="15" id="wjl-Mp-fih"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iWI-yE-csk"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Name of Note" id="Mj4-gk-2zq"/>
                     <connections>
-                        <outlet property="noteNameTextField" destination="KFF-6y-F46" id="Qbi-8b-i84"/>
                         <outlet property="noteTextField" destination="GDW-A9-eCt" id="MPF-qx-Orh"/>
-                        <outlet property="notebookButton" destination="jY9-jd-whP" id="6lY-XA-Tla"/>
-                        <outlet property="saveButton" destination="46i-I3-HOH" id="zSF-tM-H9R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h44-Qj-pgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1424.8" y="27.436281859070466"/>
+            <point key="canvasLocation" x="2364" y="27.436281859070466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XSp-zQ-7ag">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G8P-9a-dpl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Wz-9p-2jN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JwY-yp-4QO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8z-WU-8cJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="376.80000000000001" y="28.335832083958024"/>
         </scene>
     </scenes>
     <resources>

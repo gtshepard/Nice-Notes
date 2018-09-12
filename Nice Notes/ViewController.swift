@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
 
     @IBOutlet weak var addNoteButton: UIBarButtonItem!
     @IBOutlet weak var notesTableView: UITableView!
@@ -17,12 +17,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //collection of notes
     var notebook: [NSManagedObject] = []
     var imagesForNoteCells: [UIImage] = [#imageLiteral(resourceName: "bunny"),#imageLiteral(resourceName: "character"),#imageLiteral(resourceName: "parrot"),#imageLiteral(resourceName: "snail"),#imageLiteral(resourceName: "squirrel"), #imageLiteral(resourceName: "wind")]
+    var noteNameToSave: String!
+    var noteTextToSave: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
       //  notesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "noteCell")
         notesTableView.delegate = self
+  
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +50,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-    }
     
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if let noteText = noteTextToSave {
+            print(noteText)
+            
+            //MARK: Bug, doesnt save the right text in the note sometimes
+            //most likely do to the variable witht he thext that gets passed back and forth
+            for note in notebook {
+                
+                if note.value(forKey: "name") as! String == noteNameToSave! {
+                    note.setValue( noteText, forKey: "text")
+                   return
+                }
+            }
+            
+            save(name: noteNameToSave!, text: noteTextToSave!)
+            notesTableView.reloadData()
+        }
+   
+    }
     @IBAction func addNote(_ sender: Any) {
      
         let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
@@ -102,8 +125,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
-            let noteName = sender as! String
-            noteViewController.noteName = noteName
+            let note = sender as! [String]
+            noteViewController.noteName = note[0]
+            noteViewController.noteText = note[1]
         }
     }
     
@@ -125,9 +149,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notebook[indexPath.row]
-        let noteName = note.value(forKey: "name")
-        performSegue(withIdentifier: "showNote", sender: noteName)
+        
+        let noteName = note.value(forKey: "name") as! String
+        let noteText = note.value(forKey: "text") as! String
+        var noteToSend: [String] = [noteName, noteText]
+        performSegue(withIdentifier: "showNote", sender: noteToSend)
     }
+    
+  
     
 }
 

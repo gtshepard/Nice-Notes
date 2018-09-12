@@ -9,12 +9,8 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController, UINavigationControllerDelegate {
 
- 
-    @IBOutlet weak var notebookButton: UIBarButtonItem!
-    @IBOutlet weak var noteNameTextField: UITextField!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var noteTextField: UITextView!
     
     var noteName:String!
@@ -22,28 +18,26 @@ class NoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
 
         // Do any additional setup after loading the view.
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        noteTextField.text? = noteText
     }
-    @IBAction func backToNotebook(_ sender: Any) {
-        
-      // _ = self.navigationController?.popViewController(animated: true)
-     
-        
-        
-    }
+ 
     
-    
-    @IBAction func saveNote(_ sender: Any) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         
-        //pass data back to previous vc
-        //then use save method
+        if let controller = viewController as? ViewController {
+            controller.noteNameToSave = noteName // Here you pass the data back to your original view controller
+            controller.noteTextToSave = noteTextField.text!
+        }
         
     }
-    
+  
     
     
 }
