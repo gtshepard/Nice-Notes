@@ -15,56 +15,61 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var notesTableView: UITableView!
     
     //collection of notes
-    var notes: [NSManagedObject] = []
+    var names: [String] = []
     var imagesForNoteCells: [UIImage] = [#imageLiteral(resourceName: "bunny"),#imageLiteral(resourceName: "character"),#imageLiteral(resourceName: "parrot"),#imageLiteral(resourceName: "snail"),#imageLiteral(resourceName: "squirrel"), #imageLiteral(resourceName: "wind")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      //  notesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "noteCell")
         notesTableView.delegate = self
     }
     
+    
     @IBAction func addNote(_ sender: Any) {
-        createNote()
+     
+        let alert = UIAlertController(title: "New Name",
+                                      message: "Add a new name",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .default) {
+                                        [unowned self] action in
+                                        
+                                        guard let textField = alert.textFields?.first,
+                                            let nameToSave = textField.text else {
+                                                return
+                                        }
+                                        
+                                        self.names.append(nameToSave)
+                                        self.notesTableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField()
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
 
     func selectImageForCell() -> UIImage{
         let index = Int(arc4random_uniform(UInt32(imagesForNoteCells.count)))
         return imagesForNoteCells[index]
     }
-    func createNote(){
-        
-        let alert = UIAlertController(title: "Name Your Note", message: "Name Your Voice Note", preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Add", style: .default) {
-            [unowned self] action in
-            guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
-                return
-            }
-            print("NAME: \(nameToSave)")
-          //  self.fileName = nameToSave
-           // self.configureUI(button: self.recordButton, value: true)
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",style: .default)
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+            return names.count
+    }
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
+                cell.textLabel?.text = names[indexPath.row]
+                return cell
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell")!
-        
-        return noteCell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
 }
 
