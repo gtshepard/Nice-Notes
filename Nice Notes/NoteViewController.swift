@@ -15,29 +15,24 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     
     var noteName:String!
     var noteText:String!
+  //var noteTexFieldDelegate: UITextFieldDelegate =  NoteTextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.delegate = self
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         noteTextField.text? = noteText
     }
- 
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         
         if let controller = viewController as? ViewController {
-            controller.noteNameToSave = noteName // Here you pass the data back to your original view controller
+            controller.noteNameToSave = noteName
             controller.noteTextToSave = noteTextField.text!
+            
         }
-        
     }
-  
-    
-    
 }
