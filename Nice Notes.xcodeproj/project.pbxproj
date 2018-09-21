@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8513A796214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */; };
+		8513A797214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */; };
 		856D9CE62148489200647661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CE52148489200647661 /* AppDelegate.swift */; };
 		856D9CE82148489200647661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CE72148489200647661 /* ViewController.swift */; };
 		856D9CEB2148489200647661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CE92148489200647661 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nice_Notes.Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nice_Notes.Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		856D9CE22148489200647661 /* Nice Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nice Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		856D9CE52148489200647661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		856D9CE72148489200647661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		856D9CE42148489200647661 /* Nice Notes */ = {
 			isa = PBXGroup;
 			children = (
+				8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */,
+				8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */,
 				856D9CE52148489200647661 /* AppDelegate.swift */,
 				856D9CE72148489200647661 /* ViewController.swift */,
 				856D9CE92148489200647661 /* Main.storyboard */,
@@ -143,8 +149,10 @@
 			files = (
 				856D9CFB214848EC00647661 /* NoteViewController.swift in Sources */,
 				856D9CE82148489200647661 /* ViewController.swift in Sources */,
+				8513A796214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift in Sources */,
 				856D9CE62148489200647661 /* AppDelegate.swift in Sources */,
 				856D9CEE2148489200647661 /* Nice_Notes.xcdatamodeld in Sources */,
+				8513A797214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

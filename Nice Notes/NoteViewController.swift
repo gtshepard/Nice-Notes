@@ -32,7 +32,6 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
         if let controller = viewController as? ViewController {
             controller.noteNameToSave = noteName
             controller.noteTextToSave = noteTextField.text!
-            
         }
     }
 }
