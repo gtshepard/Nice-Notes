@@ -132,7 +132,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
@@ -141,16 +141,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             noteViewController.noteText = note[1]
         }
     }
-    
+
     func selectImageForCell() -> UIImage{
         let index = Int(arc4random_uniform(UInt32(imagesForNoteCells.count)))
         return imagesForNoteCells[index]
     }
     
+    //returns number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return notebook.count
     }
-        
+    
+    //populates table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
         let note = notebook[indexPath.row]
@@ -158,6 +160,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    //handles click event on table cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notebook[indexPath.row]
         
@@ -165,6 +168,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let noteText = note.value(forKey: "text") as! String
         let noteToSend: [String] = [noteName, noteText]
         performSegue(withIdentifier: "showNote", sender: noteToSend)
+    }
+ 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //slide delete button 
+        if editingStyle == .delete {
+            self.notebook.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

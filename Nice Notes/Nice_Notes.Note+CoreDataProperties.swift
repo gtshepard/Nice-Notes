@@ -20,4 +20,7 @@ extension Note {
     @NSManaged public var name: String?
     @NSManaged public var text: String?
 
+    
+    
+    
 }
