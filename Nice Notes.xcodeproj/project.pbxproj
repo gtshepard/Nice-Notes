@@ -44,6 +44,7 @@
 		856D9CD92148489200647661 = {
 			isa = PBXGroup;
 			children = (
+				856D9CE52148489200647661 /* AppDelegate.swift */,
 				856D9CE42148489200647661 /* Nice Notes */,
 				856D9CE32148489200647661 /* Products */,
 			);
@@ -60,12 +61,11 @@
 		856D9CE42148489200647661 /* Nice Notes */ = {
 			isa = PBXGroup;
 			children = (
+				859324B7215689ED0047AC5F /* Model */,
 				859324BB21568A300047AC5F /* View */,
 				859324BA21568A250047AC5F /* Controller */,
 				859324B8215689FF0047AC5F /* Storyboard */,
-				859324B7215689ED0047AC5F /* Model */,
-				856D9CE52148489200647661 /* AppDelegate.swift */,
-				856D9CEF2148489300647661 /* Assets.xcassets */,
+				859324BE21569FEF0047AC5F /* Assets */,
 				856D9CF42148489300647661 /* Info.plist */,
 			);
 			path = "Nice Notes";
@@ -92,6 +92,8 @@
 		859324BA21568A250047AC5F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				856D9CE72148489200647661 /* ViewController.swift */,
+				856D9CFA214848EC00647661 /* NoteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,10 +101,16 @@
 		859324BB21568A300047AC5F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				856D9CE72148489200647661 /* ViewController.swift */,
-				856D9CFA214848EC00647661 /* NoteViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		859324BE21569FEF0047AC5F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				856D9CEF2148489300647661 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

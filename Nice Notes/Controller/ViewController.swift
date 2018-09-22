@@ -15,10 +15,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var notesTableView: UITableView!
     
     //collection of notes
-    var notebook: [NSManagedObject] = []
+    //this changed from NSManagedObject to NoteMO becuase we subclassed
+    //NSManagedObject and made NoteMO
+    var notebook: [NoteMO] = []
     var imagesForNoteCells: [UIImage] = [#imageLiteral(resourceName: "bunny"),#imageLiteral(resourceName: "character"),#imageLiteral(resourceName: "parrot"),#imageLiteral(resourceName: "snail"),#imageLiteral(resourceName: "squirrel"), #imageLiteral(resourceName: "wind")]
     var noteNameToSave: String!
     var noteTextToSave: String!
+    
+    var dataController: DataController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
                 return
             }
-            self.save(name: nameToSave, text: "")
+            //self.save(name: nameToSave, text: "")
             self.notesTableView.reloadData()
         }
        
@@ -67,21 +71,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func fetchNoteData(){
-        
+        /**
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
         }
-        let managedContext = appDelegate.persistentContainer.viewContext
+       let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        
+    
         do {
-            notebook = try managedContext.fetch(fetchRequest)
+           // notebook = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         print("EXECUTE SECOND")
-   
+   **/
     }
     
     
@@ -112,7 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func save(name: String, text: String) {
-        
+      /**
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
         }
@@ -132,6 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+ **/
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
