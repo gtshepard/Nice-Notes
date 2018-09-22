@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //the problem with having 2 notebook objects is the fact that you need to have them both up to date, or whats the point? and plus youd have twice the data, not very efficcient both controllers are making edits to the notebook. you could always pass this notbook to the other notbook, but again you still have 2  seperate copies of a not book, and thats still 2 times the data! Bad, really bad. there must be a better way! and there is! multiple managed object contexts in core data! mwhen multiple view controllers are eidtiing the the data model this a msut. Rays, example app for this a journal. a note pad and a journal basically the same thing!! and you came to this conclsuion on your own! way to go!
             saveNoteData{ ()->() in fetchNoteData()}
     
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -171,7 +172,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //slide delete button 
+        //slide delete button
         if editingStyle == .delete {
             self.notebook.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8513A796214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */; };
-		8513A797214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */; };
 		856D9CE62148489200647661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CE52148489200647661 /* AppDelegate.swift */; };
 		856D9CE82148489200647661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CE72148489200647661 /* ViewController.swift */; };
 		856D9CEB2148489200647661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CE92148489200647661 /* Main.storyboard */; };
@@ -16,11 +14,10 @@
 		856D9CF02148489300647661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CEF2148489300647661 /* Assets.xcassets */; };
 		856D9CF32148489300647661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D9CF12148489300647661 /* LaunchScreen.storyboard */; };
 		856D9CFB214848EC00647661 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D9CFA214848EC00647661 /* NoteViewController.swift */; };
+		859324BD21569A4F0047AC5F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859324BC21569A4F0047AC5F /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nice_Notes.Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nice_Notes.Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		856D9CE22148489200647661 /* Nice Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nice Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		856D9CE52148489200647661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		856D9CE72148489200647661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +27,7 @@
 		856D9CF22148489300647661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856D9CF42148489300647661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856D9CFA214848EC00647661 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		859324BC21569A4F0047AC5F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +60,49 @@
 		856D9CE42148489200647661 /* Nice Notes */ = {
 			isa = PBXGroup;
 			children = (
-				8513A794214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift */,
-				8513A795214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift */,
+				859324BB21568A300047AC5F /* View */,
+				859324BA21568A250047AC5F /* Controller */,
+				859324B8215689FF0047AC5F /* Storyboard */,
+				859324B7215689ED0047AC5F /* Model */,
 				856D9CE52148489200647661 /* AppDelegate.swift */,
-				856D9CE72148489200647661 /* ViewController.swift */,
-				856D9CE92148489200647661 /* Main.storyboard */,
 				856D9CEF2148489300647661 /* Assets.xcassets */,
-				856D9CF12148489300647661 /* LaunchScreen.storyboard */,
 				856D9CF42148489300647661 /* Info.plist */,
-				856D9CEC2148489200647661 /* Nice_Notes.xcdatamodeld */,
-				856D9CFA214848EC00647661 /* NoteViewController.swift */,
 			);
 			path = "Nice Notes";
+			sourceTree = "<group>";
+		};
+		859324B7215689ED0047AC5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				856D9CEC2148489200647661 /* Nice_Notes.xcdatamodeld */,
+				859324BC21569A4F0047AC5F /* DataController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		859324B8215689FF0047AC5F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				856D9CE92148489200647661 /* Main.storyboard */,
+				856D9CF12148489300647661 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		859324BA21568A250047AC5F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		859324BB21568A300047AC5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				856D9CE72148489200647661 /* ViewController.swift */,
+				856D9CFA214848EC00647661 /* NoteViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,12 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859324BD21569A4F0047AC5F /* DataController.swift in Sources */,
 				856D9CFB214848EC00647661 /* NoteViewController.swift in Sources */,
 				856D9CE82148489200647661 /* ViewController.swift in Sources */,
-				8513A796214D690300C35710 /* Nice_Notes.Note+CoreDataClass.swift in Sources */,
 				856D9CE62148489200647661 /* AppDelegate.swift in Sources */,
 				856D9CEE2148489200647661 /* Nice_Notes.xcdatamodeld in Sources */,
-				8513A797214D690300C35710 /* Nice_Notes.Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
