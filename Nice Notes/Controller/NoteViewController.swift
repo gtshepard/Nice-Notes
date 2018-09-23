@@ -24,7 +24,9 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
-        print("ViewDidLoad")
+     
+        
+        
         
         let noteToRetrieve = noteTitle.title
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
@@ -38,8 +40,6 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // noteTextField.text? = noteText
-    
     }
     
     func save(){

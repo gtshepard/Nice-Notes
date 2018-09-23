@@ -141,37 +141,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         completion()
     }
     **/
-    func save(name: String, text: String) {
-      /**
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-    
-        let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
-        
-        let note = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-       note.setValue(name, forKeyPath: "name")
-       note.setValue(text, forKeyPath: "text")
-        
-        do {
-            try managedContext.save()
-            notebook.append(note)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
- **/
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
-            
-            // let note = sender as! [String]
-            //noteViewController.noteName = note[0]
-           //noteViewController.noteText = note[1]
             noteViewController.dataController = dataController
             noteViewController.noteTitle.title = sender as! String
         }
