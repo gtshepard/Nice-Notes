@@ -17,7 +17,7 @@ class DataController {
     let persistentContainer: NSPersistentContainer
     
     init(modelName: String){
-        persistentContainer = NSPersistentContainer(name: "modelName")
+        persistentContainer = NSPersistentContainer(name: modelName)
     }
     
     var viewContext: NSManagedObjectContext {

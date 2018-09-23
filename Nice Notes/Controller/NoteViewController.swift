@@ -15,16 +15,20 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     
     var noteName:String!
     var noteText:String!
+    var dataController: DataController!
+    
+    
   //var noteTexFieldDelegate: UITextFieldDelegate =  NoteTextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        noteTextField.text? = noteText
+       // noteTextField.text? = noteText
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {

@@ -30,7 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
+        
         if let result = try? dataController.viewContext.fetch(fetchRequest){
+            print("called")
             notebook = result
             notesTableView.reloadData()
         }
@@ -56,6 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //MARK: race codnition becuase fethc request is opened on a seperate thread. the fecth request doesnt alwasy finish before view Did appear is called and this can create probelsm if it does not finsih fetching the data. the notebook may not be up to date! therefore if the notebook is not up to date a value may not exist in the notebook because the data has not loaded, but noteTextToSave will always have a value becuause it had one previously. becusse we have created a note in th past. soemtimes the note doesnt exist, so what happens when it doesnt. this is the section of the code where you store the ntoes text, if you cant save it, it does nto get put in. also the value for the text,could get the wrong value because it the value doesnt exist, then the note book is updated and all the sudden a vlaue does exsit,
 
+
     }
     
     
@@ -68,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
                 return
             }
-            //self.save(name: nameToSave, text: "")
+            self.save(name: nameToSave)
             self.notesTableView.reloadData()
         }
        
@@ -79,6 +82,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         present(alert, animated: true)
     }
+    
+    func save(name: String){
+        //create a note
+        let note = NoteMO(context: dataController.viewContext)
+        //name the note
+        note.name = name
+        //save the note name (write the managed obkect content to the manged object model)
+        try? dataController.viewContext.save()
+        //add the note to the table view
+        notebook.append(note)
+    }
+    
     /**
     func fetchNoteData(){
         
@@ -100,12 +115,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     }
     **/
-/**
+ /**
     func saveNoteData(completion: ()->()){
         print("EXECUTE FIRST")
-        
         if let noteText = noteTextToSave {
-     
             //saves every time, even if text hasnt changed. wasteful and may be contributing to the bug
             for note in notebook {
                 
@@ -154,9 +167,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
-            let note = sender as! [String]
-            noteViewController.noteName = note[0]
-            noteViewController.noteText = note[1]
+           // let note = sender as! [String]
+          //  noteViewController.noteName = note[0]
+          //  noteViewController.noteText = note[1]
         }
     }
 
@@ -182,10 +195,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notebook[indexPath.row]
         
-        let noteName = note.value(forKey: "name") as! String
-        let noteText = note.value(forKey: "text") as! String
-        let noteToSend: [String] = [noteName, noteText]
-        performSegue(withIdentifier: "showNote", sender: noteToSend)
+        //let noteName = note.value(forKey: "name") as! String
+       // let noteText = note.value(forKey: "text") as! String
+       // let noteToSend: [String] = [noteName, noteText]
+        //note to send went in sender
+        performSegue(withIdentifier: "showNote", sender: nil)
     }
  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
