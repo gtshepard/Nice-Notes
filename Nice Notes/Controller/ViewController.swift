@@ -27,6 +27,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTableView.delegate = self
+        
+        
+        let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
+        if let result = try? dataController.viewContext.fetch(fetchRequest){
+            notebook = result
+            notesTableView.reloadData()
+        }
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //no method in between viewWillAppear, and viewDidAppear. viewDidAppear has no use becuase the UI has already been dispayed so you dont see the data which is waste.
         //you want the same notebook to accessable to both this viewController and the NoteViewController so you save ntoes in that controller and not deal woth this weird bandaidfix that doesnt even work in view will appear.
         //the problem with having 2 notebook objects is the fact that you need to have them both up to date, or whats the point? and plus youd have twice the data, not very efficcient both controllers are making edits to the notebook. you could always pass this notbook to the other notbook, but again you still have 2  seperate copies of a not book, and thats still 2 times the data! Bad, really bad. there must be a better way! and there is! multiple managed object contexts in core data! mwhen multiple view controllers are eidtiing the the data model this a msut. Rays, example app for this a journal. a note pad and a journal basically the same thing!! and you came to this conclsuion on your own! way to go!
-            saveNoteData{ ()->() in fetchNoteData()}
+            //saveNoteData{ ()->() in fetchNoteData()}
     
         
     }
@@ -69,9 +79,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         present(alert, animated: true)
     }
-    
+    /**
     func fetchNoteData(){
-        /**
+        
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -87,10 +97,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         print("EXECUTE SECOND")
-   **/
+ 
     }
-    
-    
+    **/
+/**
     func saveNoteData(completion: ()->()){
         print("EXECUTE FIRST")
         
@@ -116,7 +126,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("NO DATA TO SAVE")
         completion()
     }
-    
+    **/
     func save(name: String, text: String) {
       /**
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
