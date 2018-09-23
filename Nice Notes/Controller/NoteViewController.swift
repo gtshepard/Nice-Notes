@@ -14,20 +14,13 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var noteTextField: UITextView!
     @IBOutlet weak var noteTitle: UINavigationItem!
     
-    var noteName:String!
-    var noteText:String!
     var dataController: DataController!
     var note: NoteMO!
-    
-  //var noteTexFieldDelegate: UITextFieldDelegate =  NoteTextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
      
-        
-        
-        
         let noteToRetrieve = noteTitle.title
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
         //like WHERE in SQL, search entity where name == notetile
@@ -36,7 +29,6 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
         note = result![0]
         noteTextField.text = note.text
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,10 +40,10 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-       
+        //TODO: implement efficient save
+        //1.currently saves every time a user travels back to the note list view
+        //excessive calls to save wich overwirte the data in the persistent store.
+        //efficient save will only save when there are changes to save
         save()
     }
-    
-    
-    
 }

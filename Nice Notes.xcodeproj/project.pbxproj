@@ -28,6 +28,7 @@
 		856D9CF42148489300647661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856D9CFA214848EC00647661 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		859324BC21569A4F0047AC5F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		859324BF215832260047AC5F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		856D9CD92148489200647661 = {
 			isa = PBXGroup;
 			children = (
+				859324BF215832260047AC5F /* README.md */,
 				856D9CE52148489200647661 /* AppDelegate.swift */,
 				856D9CE42148489200647661 /* Nice Notes */,
 				856D9CE32148489200647661 /* Products */,
@@ -62,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				859324B7215689ED0047AC5F /* Model */,
-				859324BB21568A300047AC5F /* View */,
 				859324BA21568A250047AC5F /* Controller */,
 				859324B8215689FF0047AC5F /* Storyboard */,
 				859324BE21569FEF0047AC5F /* Assets */,
@@ -96,13 +97,6 @@
 				856D9CFA214848EC00647661 /* NoteViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		859324BB21568A300047AC5F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		859324BE21569FEF0047AC5F /* Assets */ = {

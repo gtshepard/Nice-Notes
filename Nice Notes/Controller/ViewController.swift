@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var addNoteButton: UIBarButtonItem!
     @IBOutlet weak var notesTableView: UITableView!
     
+    //image assets from udacity. i do not own these images. or intend to profit off them. this project is simp
+    
     //collection of notes
     //this changed from NSManagedObject to NoteMO becuase we subclassed
     //NSManagedObject and made NoteMO
@@ -23,48 +25,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var noteTextToSave: String!
     
     var dataController: DataController!
-    
+
+    //TODO: implement unique note ID
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //this controller acts as the table view delegate
         notesTableView.delegate = self
-        
-        
+        //fecth all notes
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
-        
+        //register notes in this context
         if let result = try? dataController.viewContext.fetch(fetchRequest){
-            print("called")
+            //set data for table view
             notebook = result
+            //load data for table view
             notesTableView.reloadData()
         }
-        
-        
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //MARK: variables do not load before this call so you are always one note behind.
-        //no method in between viewWillAppear, and viewDidAppear. viewDidAppear has no use becuase the UI has already been dispayed so you dont see the data which is waste.
-        //you want the same notebook to accessable to both this viewController and the NoteViewController so you save ntoes in that controller and not deal woth this weird bandaidfix that doesnt even work in view will appear.
-        //the problem with having 2 notebook objects is the fact that you need to have them both up to date, or whats the point? and plus youd have twice the data, not very efficcient both controllers are making edits to the notebook. you could always pass this notbook to the other notbook, but again you still have 2  seperate copies of a not book, and thats still 2 times the data! Bad, really bad. there must be a better way! and there is! multiple managed object contexts in core data! mwhen multiple view controllers are eidtiing the the data model this a msut. Rays, example app for this a journal. a note pad and a journal basically the same thing!! and you came to this conclsuion on your own! way to go!
-            //saveNoteData{ ()->() in fetchNoteData()}
-    
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //MARK: race codnition becuase fethc request is opened on a seperate thread. the fecth request doesnt alwasy finish before view Did appear is called and this can create probelsm if it does not finsih fetching the data. the notebook may not be up to date! therefore if the notebook is not up to date a value may not exist in the notebook because the data has not loaded, but noteTextToSave will always have a value becuause it had one previously. becusse we have created a note in th past. soemtimes the note doesnt exist, so what happens when it doesnt. this is the section of the code where you store the ntoes text, if you cant save it, it does nto get put in. also the value for the text,could get the wrong value because it the value doesnt exist, then the note book is updated and all the sudden a vlaue does exsit,
 
-
-    }
-    
-    
     @IBAction func addNote(_ sender: Any) {
-     
-        let alert = UIAlertController(title: "New Note", message: "Name the note", preferredStyle: .alert)
+        //alert to create and name note upon click to add button
+        let alert = UIAlertController(title: "New Note", message: "create a note", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Add", style: .default) {
             [unowned self] action in
@@ -93,63 +74,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //add the note to the table view
         notebook.append(note)
     }
+    //TODO: implement delete persistence
+    func delete(){}
     
-    
-    /**
-    func fetchNoteData(){
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-       let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
-        
-    
-        do {
-           // notebook = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        print("EXECUTE SECOND")
- 
-    }
-    **/
- /**
-    func saveNoteData(completion: ()->()){
-        print("EXECUTE FIRST")
-        if let noteText = noteTextToSave {
-            //saves every time, even if text hasnt changed. wasteful and may be contributing to the bug
-            for note in notebook {
-                
-                if note.value(forKey: "name") as! String == noteNameToSave! {
-                    print("NOTE EXISTS")
-                    note.setValue(noteText, forKey: "text")
-                    print(noteText)
-                    completion()
-                    return
-                } else{
-                    print("NOTE DOES NOT EXIST")
-                }
-            }
-            print("SAVE AND RELOAD CALLED")
-            //save(name: noteNameToSave!, text: noteTextToSave!)
-            //notesTableView.reloadData()
-        }
-                print("NO DATA TO SAVE")
-        completion()
-    }
-    **/
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
+            //controller to travel to
             let noteViewController  = segue.destination as! NoteViewController
+            //data to send to other controler
             noteViewController.dataController = dataController
             noteViewController.noteTitle.title = sender as! String
         }
     }
-
+    //TODO: random assignment of note icons
+    // use method for implementing random assingment a varieity of note icons
     func selectImageForCell() -> UIImage{
         let index = Int(arc4random_uniform(UInt32(imagesForNoteCells.count)))
         return imagesForNoteCells[index]
@@ -159,9 +97,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return notebook.count
     }
-    
+
     //populates table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
         let note = notebook[indexPath.row]
         cell.textLabel?.text = note.value(forKeyPath: "name") as? String
@@ -170,18 +109,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //handles click event on table cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //upon selection travel to NotesViewController for this cell only
         let note = notebook[indexPath.row]
-        
-        //let noteName = note.value(forKey: "name") as! String
-       // let noteText = note.value(forKey: "text") as! String
-       // let noteToSend: [String] = [noteName, noteText]
-        //note to send went in sender
         performSegue(withIdentifier: "showNote", sender: note.name)
     }
  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //slide delete button
         if editingStyle == .delete {
+            //removes cell at a givin indexs
             self.notebook.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
