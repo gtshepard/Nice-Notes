@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="1316" y="28.335832083958024"/>
         </scene>
-        <!--Name of Note-->
+        <!--Note View Controller-->
         <scene sceneID="wR3-8h-qUR">
             <objects>
                 <viewController id="WE6-dT-3qU" customClass="NoteViewController" customModule="Nice_Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,9 +115,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iWI-yE-csk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Name of Note" id="Mj4-gk-2zq"/>
+                    <navigationItem key="navigationItem" id="Mj4-gk-2zq"/>
                     <connections>
                         <outlet property="noteTextField" destination="GDW-A9-eCt" id="MPF-qx-Orh"/>
+                        <outlet property="noteTitle" destination="Mj4-gk-2zq" id="Pn1-dp-1P3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h44-Qj-pgq" userLabel="First Responder" sceneMemberID="firstResponder"/>

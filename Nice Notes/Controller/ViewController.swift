@@ -167,9 +167,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
-           // let note = sender as! [String]
-          //  noteViewController.noteName = note[0]
-          //  noteViewController.noteText = note[1]
+            // let note = sender as! [String]
+            //noteViewController.noteName = note[0]
+           //noteViewController.noteText = note[1]
+            noteViewController.dataController = dataController
+            noteViewController.noteTitle.title = sender as! String
         }
     }
 
@@ -199,7 +201,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        // let noteText = note.value(forKey: "text") as! String
        // let noteToSend: [String] = [noteName, noteText]
         //note to send went in sender
-        performSegue(withIdentifier: "showNote", sender: nil)
+        performSegue(withIdentifier: "showNote", sender: note.name)
     }
  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

@@ -12,6 +12,7 @@ import CoreData
 class NoteViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var noteTextField: UITextView!
+    @IBOutlet weak var noteTitle: UINavigationItem!
     
     var noteName:String!
     var noteText:String!
@@ -23,19 +24,29 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // noteTextField.text? = noteText
     }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    func save(text: String){
+
         
+    }
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+       
+        /**
         if let controller = viewController as? ViewController {
             controller.noteNameToSave = noteName
             controller.noteTextToSave = noteTextField.text!
         }
+        **/
+        
+        
+        
     }
+    
+    
+    
 }
