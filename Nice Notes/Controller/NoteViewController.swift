@@ -17,34 +17,39 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     var noteName:String!
     var noteText:String!
     var dataController: DataController!
-    
+    var note: NoteMO!
     
   //var noteTexFieldDelegate: UITextFieldDelegate =  NoteTextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
+        print("ViewDidLoad")
+        
+        let noteToRetrieve = noteTitle.title
+        let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
+        //like WHERE in SQL, search entity where name == notetile
+        fetchRequest.predicate = NSPredicate(format: "name==%@", noteToRetrieve!)
+        let result = try? dataController.viewContext.fetch(fetchRequest)
+        note = result![0]
+        noteTextField.text = note.text
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // noteTextField.text? = noteText
+    
     }
-    func save(text: String){
-
-        
+    
+    func save(){
+        note.text = noteTextField.text!
+        try? dataController.viewContext.save()
     }
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
        
-        /**
-        if let controller = viewController as? ViewController {
-            controller.noteNameToSave = noteName
-            controller.noteTextToSave = noteTextField.text!
-        }
-        **/
-        
-        
-        
+        save()
     }
     
     

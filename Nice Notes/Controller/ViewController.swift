@@ -88,11 +88,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let note = NoteMO(context: dataController.viewContext)
         //name the note
         note.name = name
-        //save the note name (write the managed obkect content to the manged object model)
+        //save the note name (write the managed object content to the manged object model)
         try? dataController.viewContext.save()
         //add the note to the table view
         notebook.append(note)
     }
+    
     
     /**
     func fetchNoteData(){
@@ -167,6 +168,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNote"{
             let noteViewController  = segue.destination as! NoteViewController
+            
             // let note = sender as! [String]
             //noteViewController.noteName = note[0]
            //noteViewController.noteText = note[1]
