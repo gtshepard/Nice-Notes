@@ -2,7 +2,7 @@
 
 1. [Description](#description)
 2. [Tested On](#tested-on)
-3. [Build:](#build)
+3. [Build](#build)
 4. [Possible Future Updates](#possible-future-updates)
 
 ### Description
