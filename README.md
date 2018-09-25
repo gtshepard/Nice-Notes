@@ -10,7 +10,7 @@
 This project iOS notepad app written in swift that i created for fun. 
 I will be continuously updating the project with new features over time.  
 
-#### Tested On
+### Tested On
 
 This project was written in Swift with the Xcode IDE  v9.4 and teµsted on IOS 11.4 for iPhone X and IPhone 8 plus simulators provided by Xcode. Project not optimized or tested for ipad and there for should not be expected to run smoothly on such a device. Further this project has ***NOT*** been tested on a physical device. The application currently is only garunteed to correctly  run iPhone X and iPhone 8 Plus simulators. Further testing is under way. As more devices are tested this list will be updated. 
 
