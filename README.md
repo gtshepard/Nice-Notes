@@ -16,7 +16,7 @@ This project was written in Swift with the Xcode IDE  v9.4 and teµsted on IOS 1
 
 ### Build
 
-- To run this project first  download the zip file or clone the repository. After the a copy of the prject has been obtained, open the project in Xcode and run the project on an IOS device simulator of choice (iPhone X or iPhone 8 plus) running iOS 11.4.  
+To run this project first  download the zip file or clone the repository. After the a copy of the prject has been obtained, open the project in Xcode and run the project on an IOS device simulator of choice (iPhone X or iPhone 8 plus) running iOS 11.4
 
 ### Possible Future Updates
 
