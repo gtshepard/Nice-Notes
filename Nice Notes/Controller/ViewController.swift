@@ -116,10 +116,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //slide delete button
+        let note = notebook[indexPath.row]
+        
         if editingStyle == .delete {
-            //removes cell at a givin indexs
+            
+            //deletes the the note from the NSManagedObjectContext
+            dataController.viewContext.delete(note)
+            //writes the changes to the data store
+            try? dataController.viewContext.save()
+            //removes the note from the array that popluates the tabelview
             self.notebook.remove(at: indexPath.row)
+            //deletes the actual cell in the table view
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
 }

@@ -41,10 +41,7 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate, UITe
         try? dataController.viewContext.save()
     }
     
-    //TODO: implement delete
-    func delete(){
-        
-    }
+
     
     func textViewDidChange(_ textView: UITextView) {
         save()
