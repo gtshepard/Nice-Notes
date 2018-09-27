@@ -42,7 +42,9 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate, UITe
     }
     
     //TODO: implement delete
-    func delete(){ }
+    func delete(){
+        
+    }
     
     func textViewDidChange(_ textView: UITextView) {
         save()
