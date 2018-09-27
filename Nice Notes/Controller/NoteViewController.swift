@@ -39,6 +39,7 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
         try? dataController.viewContext.save()
     }
     
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         //TODO: implement efficient save
         //1.currently saves every time a user travels back to the note list view
