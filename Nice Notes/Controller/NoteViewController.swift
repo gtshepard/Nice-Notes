@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
+class NoteViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var noteTextField: UITextView!
     @IBOutlet weak var noteTitle: UINavigationItem!
@@ -20,15 +20,19 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate, UITe
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationController?.delegate = self
         self.noteTextField.delegate = self
-        
+        //name of note
         let noteToRetrieve = noteTitle.title
+        //our fetch is for Note model objects
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
-        //like WHERE in SQL, search entity where name == notetile
+        //query a specific note by name
         fetchRequest.predicate = NSPredicate(format: "name==%@", noteToRetrieve!)
+        //fecth the data for the note
         let result = try? dataController.viewContext.fetch(fetchRequest)
+        
+        //only one note to fetch
         note = result![0]
+        //dsiplay text
         noteTextField.text = note.text
     }
     
@@ -41,13 +45,10 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate, UITe
         try? dataController.viewContext.save()
     }
     
-
-    
     func textViewDidChange(_ textView: UITextView) {
         save()
     }
-   
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {}
+
   
     //UI is blank when it comes up and looks like you can type.. What can you do about that? looks like loose leaf
     // cant name the note after
