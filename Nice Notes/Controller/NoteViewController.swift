@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UIViewController, UINavigationControllerDelegate {
+class NoteViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var noteTextField: UITextView!
     @IBOutlet weak var noteTitle: UINavigationItem!
@@ -18,9 +18,11 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
     var note: NoteMO!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.delegate = self
-     
+        self.noteTextField.delegate = self
+        
         let noteToRetrieve = noteTitle.title
         let fetchRequest: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
         //like WHERE in SQL, search entity where name == notetile
@@ -39,12 +41,17 @@ class NoteViewController: UIViewController, UINavigationControllerDelegate {
         try? dataController.viewContext.save()
     }
     
+    //TODO: implement delete
+    func delete(){ }
     
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        //TODO: implement efficient save
-        //1.currently saves every time a user travels back to the note list view
-        //excessive calls to save wich overwirte the data in the persistent store.
-        //efficient save will only save when there are changes to save
+    func textViewDidChange(_ textView: UITextView) {
         save()
     }
+   
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {}
+  
+    //UI is blank when it comes up and looks like you can type.. What can you do about that? looks like loose leaf
+    // cant name the note after
+    // get check box, that would be a lengthy implementation
+    //text manipulation. that would also be lengthy, bold, italic, bullets etc.
 }
