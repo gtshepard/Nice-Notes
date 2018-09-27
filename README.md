@@ -16,15 +16,12 @@ I will be continuously updating the project with new features over time.
 - To run this project first  download the zip file or clone the repository. After the a copy of the prject has been obtained, open the project in Xcode and run the project on an IOS device simulator of choice (iPhone X or iPhone 8 plus) running iOS 11.4.  
 
 ### Possible Future Updates:
-- Note Deletion 
 - Cloud Sync
 - Note Sharing 
+- Text Manipulation 
 
 ### Created by
 This project was created by Garrison Shepard on September 11th,  2018 
 
-
-###Current Bugs
+### Current Bugs
  - emtpy note name
- - half deletion: removed from tableview but not from data store 
- - note not saved if user doe snot go back to list view 
